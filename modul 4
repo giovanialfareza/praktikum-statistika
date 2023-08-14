@@ -1,0 +1,14 @@
+> reza=read.delim("clipboard")
+> View(reza)
+> t.test(reza$Volume, conf.level = 0.50)
+
+	One Sample t-test
+
+data:  reza$Volume
+t = 78.325, df = 15, p-value < 2.2e-16
+alternative hypothesis: true mean is not equal to 0
+50 percent confidence interval:
+ 9.806441 9.981059
+sample estimates:
+mean of x 
+  9.89375 

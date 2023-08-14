@@ -1,0 +1,19 @@
+> reza=read.delim("clipboard")
+> View(reza)
+> str(reza)
+'data.frame':	10 obs. of  1 variable:
+ $ Gaji: int  15000 15500 17500 14500 14000 16000 14500 15500 16500 14000
+> mean(reza$Gaji)
+[1] 15300
+> t.test(reza$Gaji, mu=14500)
+
+	One Sample t-test
+
+data:  reza$Gaji
+t = 2.2283, df = 9, p-value = 0.05284
+alternative hypothesis: true mean is not equal to 14500
+95 percent confidence interval:
+ 14487.86 16112.14
+sample estimates:
+mean of x 
+    15300 

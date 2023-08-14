@@ -1,0 +1,62 @@
+> df_reza = read.delim("clipboard")
+> View(df_reza)
+> head(df_reza)
+  metode korosi
+1      A     77
+2      A     54
+3      A     67
+4      A     74
+5      A     71
+6      B     60
+> model <- aov(korosi~metode, data=df_reza)
+> summary(model)
+            Df Sum Sq Mean Sq F value Pr(>F)  
+metode       2  548.8  274.40   3.348 0.0699 .
+Residuals   12  983.6   81.97                 
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> tukey.test <- TukeyHSD(model)
+> tukey.test
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = korosi ~ metode, data = df_reza)
+
+$metode
+     diff       lwr       upr     p adj
+B-A -11.2 -26.47609  4.076092 0.1657711
+C-A -14.0 -29.27609  1.276092 0.0736936
+C-B  -2.8 -18.07609 12.476092 0.8778031
+
+> df_reza=PlantGrowth
+> View(df_reza)
+> head(df_reza)
+  weight group
+1   4.17  ctrl
+2   5.58  ctrl
+3   5.18  ctrl
+4   6.11  ctrl
+5   4.50  ctrl
+6   4.61  ctrl
+
+> model <- aov(weight~group, data=df_reza)
+> summary(model)
+            Df Sum Sq Mean Sq F value Pr(>F)  
+group        2  3.766  1.8832   4.846 0.0159 *
+Residuals   27 10.492  0.3886                 
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+> tukey.test <- TukeyHSD(model)
+> tukey.test
+  Tukey multiple comparisons of means
+    95% family-wise confidence level
+
+Fit: aov(formula = weight ~ group, data = df_reza)
+
+$group
+            diff        lwr       upr     p adj
+trt1-ctrl -0.371 -1.0622161 0.3202161 0.3908711
+trt2-ctrl  0.494 -0.1972161 1.1852161 0.1979960
+trt2-trt1  0.865  0.1737839 1.5562161 0.0120064

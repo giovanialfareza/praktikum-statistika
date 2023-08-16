@@ -1,0 +1,56 @@
+> df_reza=read.delim("clipboard")
+> df_reza$brick_dummy <- ifelse(df_reza$Brick =="Yes", 1,0)
+> df_reza$N_dummy1 <- ifelse(df_reza$Neighborhood =="West", 1,0)
+> df_reza$N_dummy2 <- ifelse(df_reza$Neighborhood =="North", 1,0)
+> model=lm(df_reza$Price~df_reza$SqFt+df_reza$Bedrooms+df_reza$Bathrooms+df_reza$brick_dummy+df_reza$N_dummy1+df_reza$N_dummy2)
+> summary(model)
+
+Call:
+lm(formula = df_reza$Price ~ df_reza$SqFt + df_reza$Bedrooms + 
+    df_reza$Bathrooms + df_reza$brick_dummy + df_reza$N_dummy1 + 
+    df_reza$N_dummy2)
+
+Residuals:
+   Min     1Q Median     3Q    Max 
+-31771  -7432   -234   7946  31739 
+
+Coefficients:
+                    Estimate Std. Error
+(Intercept)         23476.62   11587.57
+df_reza$SqFt           33.38       6.85
+df_reza$Bedrooms     2247.85    2116.26
+df_reza$Bathrooms    8572.06    2912.53
+df_reza$brick_dummy 17816.32    2650.49
+df_reza$N_dummy1    28076.12    3059.80
+df_reza$N_dummy2    -6985.46    3016.65
+                    t value Pr(>|t|)    
+(Intercept)           2.026  0.04535 *  
+df_reza$SqFt          4.872 4.01e-06 ***
+df_reza$Bedrooms      1.062  0.29064    
+df_reza$Bathrooms     2.943  0.00401 ** 
+df_reza$brick_dummy   6.722 1.02e-09 ***
+df_reza$N_dummy1      9.176 5.02e-15 ***
+df_reza$N_dummy2     -2.316  0.02256 *  
+---
+Signif. codes:  
+0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+Residual standard error: 12270 on 103 degrees of freedom
+Multiple R-squared:  0.8106,	Adjusted R-squared:  0.7996 
+F-statistic: 73.47 on 6 and 103 DF,  p-value: < 2.2e-16
+
+> by(df_reza$Price, df_reza$Neighborhood, mean)
+df_reza$Neighborhood: East
+[1] 124853.8
+------------------------------------------------------------------------------------------------ 
+df_reza$Neighborhood: North
+[1] 108114.7
+------------------------------------------------------------------------------------------------ 
+df_reza$Neighborhood: West
+[1] 158462.2
+> by(df_reza$Price, df_reza$Brick, mean)
+df_reza$Brick: No
+[1] 122712
+------------------------------------------------------------------------------------------------ 
+df_reza$Brick: Yes
+[1] 148711.4

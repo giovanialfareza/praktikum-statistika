@@ -1,0 +1,20 @@
+Dataku_reza = read.delim(“clipboard”)
+wilcox.test(dataku_reza$sebelum,dataku_reza$setelah,paired=TRUE)
+
+dataku_reza = read.delim("clipboard")
+wilcox.test(dataku_reza $Sebelum, dataku_reza $Sesudah,paired=TRUE)
+
+df_reza=read.delim("clipboard")
+# independent 2-group Mann-Whitney U Test
+wilcox.test(df_reza$obat~df_reza$grup)
+# where y is numeric and A is A binary factor
+head(df_reza)
+rank(df_reza$obat)
+
+df_reza=read.delim("clipboard")
+View(df_reza)
+wilcox.test(df_reza$Genap,df_reza$Ganjil,paired=TRUE)
+
+df_reza=read.delim("clipboard")
+View(df_reza)
+wilcox.test(df_reza$caffeine,df_reza$placebo,paired=TRUE)
